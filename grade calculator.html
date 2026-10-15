@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Subject Student Grade Calculator</title>
+    <style>
+        /* Colorful & Modern CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 420px;
+            background: #ffffff;
+            padding: 30px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.15);
+            border-top: 5px solid #6c5ce7;
+        }
+
+        h2 {
+            color: #2d3436;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: inline-block;
+            width: 75px;
+            font-weight: 600;
+            color: #636e72;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 95px);
+            padding: 10px;
+            border: 2px solid #dfe6e9;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #6c5ce7;
+            background-color: #fdfdff;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #5b4bc4, #8c85eb);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00cec9;
+        }
+
+        .result-box h3 {
+            margin: 8px 0;
+            color: #2d3436;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Grade Calculator</h2>
+
+        <!-- Marks Input Boxes for 5 Subjects -->
+        <div class="input-box">
+            <label>Mark 1:</label>
+            <input type="number" id="m1">
+        </div>
+        <div class="input-box">
+            <label>Mark 2:</label>
+            <input type="number" id="m2">
+        </div>
+        <div class="input-box">
+            <label>Mark 3:</label>
+            <input type="number" id="m3">
+        </div>
+        <div class="input-box">
+            <label>Mark 4:</label>
+            <input type="number" id="m4">
+        </div>
+        <div class="input-box">
+            <label>Mark 5:</label>
+            <input type="number" id="m5">
+        </div>
+
+        <!-- Calculate Button -->
+        <button onclick="calculateGrade()">Calculate Grade</button>
+
+        <!-- Results -->
+        <div class="result-box">
+            <h3 id="total">Total: </h3>
+            <h3 id="avg">Average: </h3>
+            <h3 id="grade">Grade: </h3>
+        </div>
+    </div>
+
+<script>
+    function calculateGrade() {
+        // 1. 5 subjects-oda marks-a edukkurom
+        let m1 = Number(document.getElementById('m1').value);
+        let m2 = Number(document.getElementById('m2').value);
+        let m3 = Number(document.getElementById('m3').value);
+        let m4 = Number(document.getElementById('m4').value);
+        let m5 = Number(document.getElementById('m5').value);
+
+        // 2. Total & Average (5-al divide panrom) calculate panrom
+        let total = m1 + m2 + m3 + m4 + m5;
+        let avg = total / 5;
+
+        // 3. Grade kandu pudikkirom
+        let grade = '';
+        
+        if (m1 < 35 || m2 < 35 || m3 < 35 || m4 < 35 || m5 < 35) {
+            grade = 'Fail ❌';
+        } else if (avg >= 90) {
+            grade = 'A+ Grade 🌟';
+        } else if (avg >= 75) {
+            grade = 'A Grade 🅰️';
+        } else if (avg >= 50) {
+            grade = 'B Grade 🅱️';
+        } else {
+            grade = 'C Grade 👍';
+        }
+
+        // 4. Result-a screen-la kaatrom
+        document.getElementById('total').innerText = "Total: " + total + " / 500";
+        document.getElementById('avg').innerText = "Average: " + avg.toFixed(1) + "%";
+        document.getElementById('grade').innerText = "Grade: " + grade;
+    }
+</script>
+
+</body>
+</html>
